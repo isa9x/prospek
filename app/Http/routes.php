@@ -13,6 +13,20 @@
 
 Route::get('/', 'WelcomeController@index');
 
+Route::get('/beranda',function(){	return view('data.beranda');   });
+
+Route::get('/pendaftaran',function(){	return view('data.pendaftaran');   });
+
+Route::get('/paket',function(){	return view('data.form-paket');   });
+
+Route::get('/data-bayar',function(){	return view('data.data-bayar');   });
+
+Route::get('/data-kelas',function(){	return view('data.data-kelas');   });
+
+Route::get('/bayar',function(){	return view('data.bayar');   });
+
+Route::get('/faktur',function(){	return view('data.faktur');   });
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
