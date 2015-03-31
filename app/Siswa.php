@@ -8,6 +8,7 @@ class Siswa extends Model {
 	protected $guarded =['id'];
 	protected $fillable = [
 		'nis',
+		'no_ktp',
 		'nama',
 		'tempat',
 		'tgl_lahir',

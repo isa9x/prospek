@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableProgram extends Migration {
+class CreateTableBiayaProgram extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,8 @@ class CreateTableProgram extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('program', function(Blueprint $table)
+		//
+		Schema::create('biaya_program', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('kode');
@@ -29,7 +30,8 @@ class CreateTableProgram extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('program');
+		//
+		Schema::drop('biaya_program');
 	}
 
 }
