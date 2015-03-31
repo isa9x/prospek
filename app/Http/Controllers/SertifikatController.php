@@ -1,19 +1,19 @@
 <?php namespace App\Http\Controllers;
 
-use App\Program;
+use App\Sertifikat;
 use App\Http\Requests;
-use App\Http\Requests\ProgramRequest;
+use App\Http\Requests\SertifikatRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 
-class ProgramController extends Controller {
+class SertifikatController extends Controller {
 
 	
 	public function index()
 	{
-		$program= Program::all();
-		return view('program.index', compact('program'));
+		$sertifikat= Sertifikat::all();
+		return view('sertifikat.index', compact('sertifikat'));
 	}
 
 	/**
@@ -24,7 +24,7 @@ class ProgramController extends Controller {
 
 	public function create()
 	{
-		return view('program.create');
+		return view('sertifikat.create');
 	}
 
 	/**
@@ -32,12 +32,12 @@ class ProgramController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(ProgramRequest $request)
+	public function store(SertifikatRequest $request)
 	{
 		//
-		Program::create($request->all());
+		Sertifikat::create($request->all());
 		//Auth::user()->articles()->save($article);
-		return redirect('program');
+		return redirect('sertifikat');
 
 	}
 
@@ -49,8 +49,8 @@ class ProgramController extends Controller {
 	 */
 	public function show($id)
 	{		
-		$program=Program::findOrFail($id);
-		return view('program.show',compact('program'));
+		$sertifikat=Sertifikat::findOrFail($id);
+		return view('sertifikat.show',compact('sertifikat'));
 	}
 
 	/**
@@ -61,8 +61,8 @@ class ProgramController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$program=Program::findOrFail($id);
-		return view('program.edit',compact('program'));
+		$sertifikat=Sertifikat::findOrFail($id);
+		return view('sertifikat.edit',compact('sertifikat'));
 	}
 
 	/**
@@ -73,8 +73,8 @@ class ProgramController extends Controller {
 	 */
 	public function update(Request $request, $id)
 	{
-		Program::findOrFail($id)->update($request->all());
-		return redirect('program');
+		Sertifikat::findOrFail($id)->update($request->all());
+		return redirect('sertifikat');
 	}
 
 	/**
@@ -86,22 +86,20 @@ class ProgramController extends Controller {
 	public function destroy($id)
 	{
 		//
-		Program::findOrFail($id)->delete();
-		return redirect()->route('program.index');
+		Sertifikat::findOrFail($id)->delete();
+		return redirect()->route('sertifikat.index');
 	}
 
 	public function datatables(){
-		$program = Program::all();
+		$sertifikat = Sertifikat::all();
 		$data=array();
 		$l=array();
 		$i=0;
-		foreach ($program as $value) {
-			$l[0] = $value->kode;
-			$l[1] = $value->nama;
-			$l[2] = $value->biaya;
-			$l[3] = "
-				<a href='".route('program.edit',$value->id)."' data-toggle='modal' data-target='#myModal'>Edit</a> - 
-				<a href='".route('program.destroy',$value->id)."' data-method = 'DELETE' data-confirm='yakin untuk menghapus?' >Hapus</a>
+		foreach ($sertifikat as $value) {
+			$l[0] = $value->biaya;
+			$l[1] = "
+				<a href='".route('sertifikat.edit',$value->id)."' data-toggle='modal' data-target='#myModal'>Edit</a> - 
+				<a href='".route('sertifikat.destroy',$value->id)."' data-method = 'DELETE' data-confirm='yakin untuk menghapus?' >Hapus</a>
 			";
 
 			$data[$i]=$l;
@@ -112,8 +110,4 @@ class ProgramController extends Controller {
 		return response()->json($return);
 	}
 
-	public function paket(){
-		$program=Program::lists('nama','id');
-		return view('data.form-paket')->with('program',$program);
-	}
 }

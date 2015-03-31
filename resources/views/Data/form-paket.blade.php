@@ -3,7 +3,7 @@
 <!-- awal section content -->
 @section('content')
 
-            <form id="pendaftaran" class="form-horizontal" action="#" method="post">
+            {!! Form::open() !!}
                 <div class="container">
 
                     <div class="row">
@@ -28,21 +28,7 @@
                                  <div class="control-group">
                                     <label for="Paket" class="control-label">Paket</label>
                                     <div class="controls">
-                                        <select id="Paket" name="Paket" class="span5">
-                                            <option value="">-- Pilih Paket --</option>
-                                            <option>
-                                                Akuntansi Dasar Privat
-                                            </option>
-                                            <option>
-                                                Akuntansi Dasar Semi Privat
-                                            </option>
-                                            <option>
-                                                Akuntansi Menengah Privat
-                                            </option>
-                                            <option>
-                                                Akuntansi Menengah Semi Privat
-                                            </option>
-                                        </select>
+                                        {!! Form::select('paket', $program, null, ['id'=>'paket', 'class'=>'span5'])!!}
                                     </div>
                                 </div>
 
@@ -75,7 +61,7 @@
                         <button type="submit" class="btn" name="action" value="CANCEL">Cancel</button>
                     </footer>
                 </div>
-            </form>
+             {!! Form::close() !!} 
 
 @stop
 <!-- awal section javascript -->

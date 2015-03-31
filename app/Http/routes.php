@@ -17,7 +17,7 @@ Route::get('/beranda',function(){	return view('data.beranda');   });
 
 Route::get('/pendaftaran',function(){	return view('data.pendaftaran');   });
 
-Route::get('/paket',function(){	return view('data.form-paket');   });
+Route::get('/paket','ProgramController@paket');
 
 Route::get('/data-bayar',function(){	return view('data.data-bayar');   });
 
@@ -35,6 +35,13 @@ Route::get(
 	'uses'=>'ProgramController@datatables']);
 
 Route::resource('program','ProgramController');
+
+Route::get(
+	'sertifikat/datatables',
+	['as'=>'sertifikat.datatables',
+	'uses'=>'SertifikatController@datatables']);
+
+Route::resource('sertifikat','SertifikatController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
