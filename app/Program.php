@@ -8,6 +8,7 @@ class Program extends Model {
 	protected $guarded =['id'];
 	protected $fillable = [
 		'kode',
+		'nama',
 		'biaya'
 	];
 

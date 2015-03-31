@@ -2,13 +2,14 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pendaftaran extends Model {
+class BiayaProgram extends Model {
 
-	protected $table ='pendaftaran';
+	protected $table ='biaya_program';
 	protected $guarded =['id'];
 	protected $fillable = [
-		'tgl',
-		'jumlah'
-		];
+		'kode',
+		'nama',
+		'biaya'
+	];
 
 }

@@ -16,6 +16,7 @@ class CreateTablePendaftaran extends Migration {
 		{
 			$table->increments('id');
 			$table->date('tgl');
+			$table->integer('jumlah')->unsigned();
 			$table->timestamps();
 		});
 	}

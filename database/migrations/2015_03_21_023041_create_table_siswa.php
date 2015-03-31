@@ -16,11 +16,12 @@ class CreateTableSiswa extends Migration {
 		{
 			$table->increments('id');
 			$table->string('nis');
+			$table->string('no_ktp')->unique();
 			$table->string('nama');
 			$table->string('tempat');
 			$table->date('tgl_lahir');
 			$table->string('hp');
-			$table->string('nama_ortu')
+			$table->string('nama_ortu');
 			$table->text('alamat');
 			$table->timestamps();
 		});

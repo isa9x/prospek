@@ -15,7 +15,7 @@ class CreateTablePembayaran extends Migration {
 		Schema::create('pembayaran', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->foreign('id_program')->references('id')->on('program');
+			$table->integer('id_program')->unsigned();
 			$table->date('tgl');
 			$table->integer('jumlah')->unsigned();
 			$table->timestamps();
