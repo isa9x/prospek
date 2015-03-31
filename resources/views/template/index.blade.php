@@ -10,7 +10,7 @@
     
     <!--script type="text/javascript" src="http://www.google.com/jsapi"></script-->
 
-    {!!HTML::script("assets/js/jquery/jquery-1.8.2.min.js")!!}
+    {!!HTML::script("assets/js/jquery/jquery-2.0.3.min.js")!!}
     {!!HTML::style("assets/css/customize-template.css")!!}
 
     {!!HTML::script("assets/datatables/jquery.datatables.js")!!}

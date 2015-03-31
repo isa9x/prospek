@@ -29,6 +29,13 @@ Route::get('/faktur',function(){	return view('data.faktur');   });
 
 Route::get('home', 'HomeController@index');
 
+Route::get(
+	'program/datatables',
+	['as'=>'program.datatables',
+	'uses'=>'ProgramController@datatables']);
+
+Route::resource('program','ProgramController');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
