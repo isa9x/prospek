@@ -15,7 +15,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('/beranda',function(){	return view('data.beranda');   });
 
-Route::get('/pendaftaran',function(){	return view('data.pendaftaran');   });
+Route::controller('pendaftaran','PendaftaranController');
 
 Route::get('/paket','ProgramController@paket');
 
