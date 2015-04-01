@@ -7,10 +7,7 @@
             <h5>Sertifikat</h5>
             
         </div>
-        <div class="box-content box-table">
-
- <a class="btn btn-primary pull-right" id="sign" data-toggle='modal' data-target='#myModal' href="{!! route('sertifikat.create') !!}"><i class="icon-g-circle-plus"></i>Tambah</a>
-   
+        <div class="box-content box-table">   
    <table class='table ' id='datatables'>
         <thead>
         <tr>

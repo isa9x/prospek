@@ -22,7 +22,7 @@ class SertifikatController extends Controller {
 	 * @return Response
 	 */
 
-	public function create()
+	/*public function create()
 	{
 		return view('sertifikat.create');
 	}
@@ -32,7 +32,7 @@ class SertifikatController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(SertifikatRequest $request)
+	/* public function store(SertifikatRequest $request)
 	{
 		//
 		Sertifikat::create($request->all());
@@ -83,12 +83,12 @@ class SertifikatController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	/* public function destroy($id)
 	{
 		//
 		Sertifikat::findOrFail($id)->delete();
 		return redirect()->route('sertifikat.index');
-	}
+	} */
 
 	public function datatables(){
 		$sertifikat = Sertifikat::all();
@@ -98,9 +98,8 @@ class SertifikatController extends Controller {
 		foreach ($sertifikat as $value) {
 			$l[0] = $value->biaya;
 			$l[1] = "
-				<a href='".route('sertifikat.edit',$value->id)."' data-toggle='modal' data-target='#myModal'>Edit</a> - 
-				<a href='".route('sertifikat.destroy',$value->id)."' data-method = 'DELETE' data-confirm='yakin untuk menghapus?' >Hapus</a>
-			";
+				<a href='".route('sertifikat.edit',$value->id)."' data-toggle='modal' data-target='#myModal'>Edit</a> 
+				";
 
 			$data[$i]=$l;
 			$i++;
