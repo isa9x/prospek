@@ -8,6 +8,7 @@ use App\Siswa;
 use App\Program;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
+use DB;
 
 
 class PendaftaranController extends Controller {
@@ -20,6 +21,14 @@ class PendaftaranController extends Controller {
 
 	public function postIndex(Request $request)
 	{
+		$siswa=$request->input('siswa');
+		$bp=$request->input('pendaftaran');
+		$bp['tgl']=date('Y-m-d');
+			DB::transaction(function()use($siswa,$bp){
+			Siswa::create($siswa);
+			Pendaftaran::create($bp);
+
+		});
 
 	}
 }

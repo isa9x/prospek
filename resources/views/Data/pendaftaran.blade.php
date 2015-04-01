@@ -4,7 +4,7 @@
 @section('content')
         
         <section id="pendaftaran_siswa" class="page container">
-            <form id="pendaftaran" class="form-horizontal" action="#" method="post">
+            {!! Form::open(['action'=>'PendaftaranController@postIndex','class'=>'form-horizontal'])!!}
                 <div class="container">
 
                     <div class="alert alert-block alert-info">
