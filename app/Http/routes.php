@@ -43,6 +43,13 @@ Route::get(
 
 Route::resource('sertifikat','SertifikatController');
 
+Route::get(
+	'biayapendaftaran/datatables',
+	['as'=>'biayapendaftaran.datatables',
+	'uses'=>'BiayaPendaftaranController@datatables']);
+
+Route::resource('biayapendaftaran','BiayaPendaftaranController');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
