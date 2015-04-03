@@ -15,21 +15,20 @@
                                     <label class="control-label">NIS</label>
                                     <div class="controls">
                                         <?php $siswa = session('siswa') ?>
-                                        <input required autofocus name="NIS" class="span5" type="text" value="{!! $siswa['nis']!!}" autocomplete="false">
+                                        <input required autofocus name="NIS" class="span5" type="text" value="{!! session('siswa')['nis'] !!}" autocomplete="false">
                                     </div>
                                 </div>
-
                                 <div class="control-group ">
                                     <label class="control-label">Nama</label>
                                     <div class="controls">
-                                        <input required autofocus name="Nama" class="span5" type="text" value="" autocomplete="false">
+                                        <input required autofocus name="Nama" class="span5" type="text" value="{!! session('siswa')['nama'] !!}" autocomplete="false">
                                     </div>
                                 </div>
 
                                  <div class="control-group">
                                     <label for="Paket" class="control-label">Paket</label>
                                     <div class="controls">
-                                        {!! Form::select('paket', $program, null, ['id'=>'paket', 'class'=>'span5'])!!}
+                                        {!! Form::select('Paket', $program, null, ['id'=>'Paket', 'class'=>'span5'])!!}
                                     </div>
                                 </div>
 
@@ -43,7 +42,7 @@
                                 <div class="control-group ">
                                     <label class="control-label">Biaya Sertifikat</label>
                                     <div class="controls">
-                                        <input required autofocus name="BSertifikat" id="BSertifikat" class="span5" min="0" step="1000" type="Number" value="0" readonly>
+                                        {!! Form::input('number','BSertifikat', $sertifikat, ['id'=>'BSertifikat', 'class'=>'span5','step'=>'1000', 'readonly']) !!}
                                     </div>
                                 </div>
                                 
@@ -69,15 +68,26 @@
 @section('js')
 <script type="text/javascript">
 $(document).ready(function() {
-    function total(){
-        var a=$('#BPaket').val();
-        var b=$('#BSertifikat').val();
-        var c=parseInt(a)+parseInt(b);
-        $('#Total').val(c);
-    }
+ 
 
-    $('#BPaket').change(function(){total();});
-    $('#BSertifikat').change(function(){total();});
-} );
+    $('#Paket').prepend('<option selected=true>Pilih Paket</option>');
+
+    $('#Paket').change(function(){
+        var isi=$('#Paket').val();
+        $.ajax({
+            url:'{!! url("pendaftaranpaket") !!}/'+isi,
+            type: 'get',
+            dataType: 'json',
+        
+            success: function(data){
+                $('#BPaket').val(data);                   
+                var a=$('#BPaket').val();
+                var b=$('#BSertifikat').val();
+                var c=parseInt(a)+parseInt(b);
+                $('#Total').val(c);
+            }
+        });
+    });
+});
 </script>
 @stop

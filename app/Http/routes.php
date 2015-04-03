@@ -19,6 +19,8 @@ Route::controller('pendaftaran','PendaftaranController');
 
 Route::get('/paket','ProgramController@paket');
 
+Route::get('pendaftaranpaket/{id}','PendaftaranController@getProgram');
+
 Route::get('/data-bayar',function(){	return view('data.data-bayar');   });
 
 Route::get('/data-kelas',function(){	return view('data.data-kelas');   });

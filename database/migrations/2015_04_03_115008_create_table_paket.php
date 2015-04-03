@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableProgram extends Migration {
+class CreateTablePaket extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,12 @@ class CreateTableProgram extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('program', function(Blueprint $table)
+		Schema::create('paket', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('kode');
-			$table->string('nama');
-			$table->integer('biaya')->unsigned();
+			$table->integer('biaya_paket')->unsigned();
+			$table->integer('biaya_sertifikat')->unsigned();
+			$table->integer('nama');
 			$table->timestamps();
 		});
 	}
@@ -29,7 +29,7 @@ class CreateTableProgram extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('program');
+		Schema::drop('paket');
 	}
 
 }

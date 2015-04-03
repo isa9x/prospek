@@ -4,8 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BiayaPendaftaran extends Model {
 
-	protected $table ='biaya_pendaftaran';
-	protected $guarded =['id'];
-	protected $fillable = ['biaya'];
+	protected $table="biaya_pendaftaran";
+	protected $guard=['id'];
+	protected $fillable=['biaya'];
 
 }

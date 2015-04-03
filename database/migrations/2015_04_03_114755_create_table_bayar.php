@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableSertifikat extends Migration {
+class CreateTableBayar extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,12 @@ class CreateTableSertifikat extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sertifikat', function(Blueprint $table)
+		Schema::create('bayar', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('biaya')->unsigned();
+			$table->integer('id_total_bayar')->unsigned();
+			$table->integer('id_siswa')->unsigned();
+			$table->integer('jumlah')->unsigned();
 			$table->timestamps();
 		});
 	}
@@ -27,7 +29,7 @@ class CreateTableSertifikat extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('sertifikat');
+		Schema::drop('bayar');
 	}
 
 }
