@@ -19,6 +19,13 @@ class PendaftaranController extends Controller {
 		return view('data.pendaftaran')->with('biaya',$biaya);
 	}
 
+
+	public function getPaket()
+	{
+		$program=Program::lists('nama','id');
+		return view('data.form-paket')->with('program',$program);
+	}
+
 	public function postIndex(Request $request)
 	{
 		$siswa=$request->input('siswa');
@@ -29,6 +36,9 @@ class PendaftaranController extends Controller {
 			Pendaftaran::create($bp);
 
 		});
-
+		session('siswa',$siswa);
+		return redirect()->action('PendaftaranController@getPaket');
 	}
+
+
 }

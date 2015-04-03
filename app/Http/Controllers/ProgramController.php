@@ -112,8 +112,5 @@ class ProgramController extends Controller {
 		return response()->json($return);
 	}
 
-	public function paket(){
-		$program=Program::lists('nama','id');
-		return view('data.form-paket')->with('program',$program);
-	}
+	
 }

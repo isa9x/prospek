@@ -14,7 +14,8 @@
                                 <div class="control-group ">
                                     <label class="control-label">NIS</label>
                                     <div class="controls">
-                                        <input required autofocus name="NIS" class="span5" type="text" value="" autocomplete="false">
+                                        <?php $siswa = session('siswa') ?>
+                                        <input required autofocus name="NIS" class="span5" type="text" value="{!! $siswa['nis']!!}" autocomplete="false">
                                     </div>
                                 </div>
 
