@@ -17,7 +17,7 @@ class CreateTablePaket extends Migration {
 			$table->increments('id');
 			$table->integer('biaya_paket')->unsigned();
 			$table->integer('biaya_sertifikat')->unsigned();
-			$table->integer('nama');
+			$table->string('nama');
 			$table->timestamps();
 		});
 	}

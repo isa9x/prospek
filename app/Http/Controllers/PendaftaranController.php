@@ -2,11 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Pendaftaran;
-use App\Sertifikat;
 use App\BiayaPendaftaran;
 use App\Siswa;
-use App\Program;
+use App\Paket;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use DB;
@@ -24,15 +22,14 @@ class PendaftaranController extends Controller {
 
 	public function getPaket()
 	{
-		$program=Program::lists('nama','id');
-		$sertifikat=Sertifikat::find(1)->biaya;
-		return view('data.form-paket')->with('program',$program)->with('sertifikat',$sertifikat);
+		$paket=Paket::lists('nama','id');
+		return view('data.form-paket')->with('paket',$paket);
 	}
 
 	public function getProgram($id)
 	{
-		$program=Program::find($id);
-		return response()->json($program->biaya);
+		$paket=Paket::find($id);
+		return response()->json($paket->biaya);
 	}
 
 	public function postIndex(Request $request)
