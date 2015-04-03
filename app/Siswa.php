@@ -12,7 +12,8 @@ class Siswa extends Model {
 		'tempat',
 		'tgl_lahir',
 		'nama_ortu',
-		'alamat'
+		'alamat',
+		'biaya_pendaftaran'
 	];
 
 }

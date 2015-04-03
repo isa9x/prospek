@@ -22,6 +22,7 @@ class CreateTableSiswa extends Migration {
 			$table->date('tgl_lahir');
 			$table->string('nama_ortu');
 			$table->text('alamat');
+			$table->integer('biaya_pendaftaran')->unsigned();
 			$table->timestamps();
 		});
 	}

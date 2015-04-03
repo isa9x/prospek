@@ -69,7 +69,7 @@
                                  <div class="control-group ">
                                     <label class="control-label">Biaya Pendaftaran</label>
                                     <div class="controls">
-                                        <input required name="pendaftaran[jumlah]" class="span5" type="Number" value="{!! $biaya !!}" min="30000" step="1000" autocomplete="false">
+                                        <input required name="siswa[biaya_pendaftaran]" class="span5" type="Number" value="{!! $biaya !!}" autocomplete="false" readonly>
                                     </div>
                                 </div>                               
                             </fieldset>
