@@ -3,60 +3,52 @@
 <!-- awal section content -->
 @section('content')
 
-            <form id="pendaftaran" class="form-horizontal" action="faktur" method="post">
+            {!! Form::open(['action'=>'PendaftaranController@postBayar','class'=>'form-horizontal'])!!}
                 <div class="container">
 
                     <div class="row">
                         <div id="pendaftaran" class="span5">
                             <fieldset>
-                                <legend>Pembayaran</legend>
-                                
+                                <legend>Pembayaran</legend> 
                                 <div class="control-group ">
                                     <label class="control-label">NIS</label>
                                     <div class="controls">
-                                        <input required autofocus name="NIS" class="span5" type="text" value="" autocomplete="false">
+                                        <input required autofocus name="NIS" class="span5" type="text" value="{!! session('siswa')['nis'] !!}" autocomplete="false" readonly>
                                     </div>
                                 </div>
 
                                 <div class="control-group ">
                                     <label class="control-label">Nama</label>
                                     <div class="controls">
-                                        <input required autofocus name="Nama" class="span5" type="text" value="" autocomplete="false">
+                                        <input required autofocus name="Nama" class="span5" type="text" value="{!! session('siswa')['nama'] !!}" autocomplete="false" readonly>
                                     </div>
                                 </div>
 
                                  <div class="control-group">
                                     <label for="Paket" class="control-label">Paket</label>
                                     <div class="controls">
-                                        <select id="Paket" name="Paket" class="span5">
-                                            <option value="">-- Pilih Paket --</option>
-                                            <option>
-                                                Akuntansi Dasar Privat
-                                            </option>
-                                            <option>
-                                                Akuntansi Dasar Semi Privat
-                                            </option>
-                                            <option>
-                                                Akuntansi Menengah Privat
-                                            </option>
-                                            <option>
-                                                Akuntansi Menengah Semi Privat
-                                            </option>
-                                        </select>
+                                         <input required autofocus name="Nama" class="span5" type="text" value="{!! session('nama_paket') !!}" autocomplete="false" readonly>
                                     </div>
                                 </div>
 
                                 <div class="control-group ">
                                     <label class="control-label">Jumlah Bayar</label>
                                     <div class="controls">
-                                        <input required autofocus name="Bayar" id="Sisa" class="span5" type="Number" min="20000" step="1000" value="0" readonly>
+                                        <input required autofocus name="Bayar" id="Bayar" class="span5" type="Number" min=10000 max="{!! session('paket')['biaya_paket'] !!}" step=10000 value="">
                                     </div>
                                 </div>
 
                                 <div class="control-group ">
-                                    <label class="control-label">Sisa</label>
+                                    <label class="control-label">Sisa Lama</label>
                                     <div class="controls">
-                                        <input required autofocus name="Sisa" id="Sisa" class="span5" min="0" step="1000" type="Number" value="0" readonly>
+                                        <input required autofocus name="SisaL" id="SisaL" class="span5" min="0" step="1000" type="Number" value="{!! session('paket')['biaya_paket'] !!}" readonly>
+                                    </div>
+                                </div>
+
+                                 <div class="control-group ">
+                                    <label class="control-label">Sisa Sekarang</label>
+                                    <div class="controls">
+                                        <input required autofocus name="SisaS" id="SisaS" class="span5" min="0" step="1000" type="Number" value="{!! session('paket')['biaya_paket'] !!}" readonly>
                                     </div>
                                 </div>
                                 
@@ -82,7 +74,20 @@
 @section('js')
 <script type="text/javascript">
 $(document).ready(function() {
-    
-} );
+    $('#Bayar').keyup(function(){hitung()}).change(function(){hitung()});
+    function hitung(){
+        var a= $('#Bayar').val();
+        var b= $('#SisaL').val();
+        var c= parseInt(b)-parseInt(a);
+        $('#SisaS').val(c);
+
+        if(c==0){
+            $('#Ket').val('Lunas');
+        }else{
+            $('#Ket').val('Belum Lunas');
+        }
+
+    }
+});
 </script>
 @stop

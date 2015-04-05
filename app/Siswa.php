@@ -13,6 +13,7 @@ class Siswa extends Model {
 		'tgl_lahir',
 		'nama_ortu',
 		'alamat',
+		'hp',
 		'biaya_pendaftaran'
 	];
 

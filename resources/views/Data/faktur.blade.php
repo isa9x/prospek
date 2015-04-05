@@ -10,42 +10,42 @@
                                 <div class="control-group">
                                     <label class="control-labels">NIS</label>
                                     <div class="control-labels">
-                                       : 1000001
+                                       : {!! session('siswa')['nis'] !!}
                                     </div>
                                 </div>
 
                                 <div class="control-group ">
                                     <label class="control-labels">Nama</label>
                                     <div class="control-labels">
-                                       : Muhammad Isa
+                                       : {!! session('siswa')['nama'] !!}
                                     </div>
                                 </div>
 
                                  <div class="control-group">
                                     <label for="Paket" class="control-labels">Paket</label>
                                     <div class="control-labels">
-                                       :         Akuntansi Menengah Semi Privat
+                                       :         {!! session('nama_paket') !!}
                                     </div>
                                 </div>
 
                                 <div class="control-group ">
                                     <label class="control-labels">Jumlah Bayar</label>
                                     <div class="control-labels">
-                                      :  Rp 300.000
+                                      :  {!! session('bayar')['jumlah'] !!}
                                     </div>
                                 </div>
 
                                 <div class="control-group ">
                                     <label class="control-labels">Sisa</label>
                                     <div class="control-labels">
-                                       : Rp 400.000
+                                       : {!! session('sisa') !!}
                                     </div>
                                 </div>
                                 
                                 <div class="control-group ">
                                     <label class="control-labels">Keterangan</label>
                                     <div class="control-labels">
-                                       : Belum Lunas
+                                       : {!! session('ket') !!}
                                     </div>
                                 </div>
 

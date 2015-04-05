@@ -3,7 +3,7 @@
 <!-- awal section content -->
 @section('content')
 
-            {!! Form::open() !!}
+            {!! Form::open(['action'=>'PendaftaranController@postPaket','class'=>'form-horizontal']) !!}
                 <div class="container">
 
                     <div class="row">
@@ -14,21 +14,20 @@
                                 <div class="control-group ">
                                     <label class="control-label">NIS</label>
                                     <div class="controls">
-                                        <?php $siswa = session('siswa') ?>
-                                        <input required autofocus name="NIS" class="span5" type="text" value="{!! session('siswa')['nis'] !!}" autocomplete="false">
+                                        <input required autofocus name="NIS" class="span5" type="text" value="{!! session('siswa')['nis'] !!}" autocomplete="false" readonly>
                                     </div>
                                 </div>
                                 <div class="control-group ">
                                     <label class="control-label">Nama</label>
                                     <div class="controls">
-                                        <input required autofocus name="Nama" class="span5" type="text" value="{!! session('siswa')['nama'] !!}" autocomplete="false">
+                                        <input required autofocus name="Nama" class="span5" type="text" value="{!! session('siswa')['nama'] !!}" autocomplete="false" readonly>
                                     </div>
                                 </div>
 
                                  <div class="control-group">
                                     <label for="Paket" class="control-label">Paket</label>
                                     <div class="controls">
-                                        {!! Form::select('Paket', $program, null, ['id'=>'Paket', 'class'=>'span5'])!!}
+                                        {!! Form::select('Paket', $paket, null, ['id'=>'Paket', 'class'=>'span5'])!!}
                                     </div>
                                 </div>
 
@@ -42,7 +41,7 @@
                                 <div class="control-group ">
                                     <label class="control-label">Biaya Sertifikat</label>
                                     <div class="controls">
-                                        {!! Form::input('number','BSertifikat', $sertifikat, ['id'=>'BSertifikat', 'class'=>'span5','step'=>'1000', 'readonly']) !!}
+                                        <input required autofocus name="BSertifikat" id="BSertifikat" class="span5" type="Number" min="0" step="1000" value="0" readonly>
                                     </div>
                                 </div>
                                 
@@ -57,7 +56,7 @@
                         </div>
                     </div>
                     <footer id="submit-actions" class="form-actions">
-                        <button id="submit-button" type="submit" class="btn btn-primary" name="action" value="CONFIRM">Save & Pay</button>
+                        <button id="submit-button" type="submit" class="btn btn-primary" name="action" value="CONFIRM">Next</button>
                         <button type="submit" class="btn" name="action" value="CANCEL">Cancel</button>
                     </footer>
                 </div>
@@ -80,7 +79,8 @@ $(document).ready(function() {
             dataType: 'json',
         
             success: function(data){
-                $('#BPaket').val(data);                   
+                $('#BPaket').val(data.bpaket);  
+                $('#BSertifikat').val(data.bsertifikat);                   
                 var a=$('#BPaket').val();
                 var b=$('#BSertifikat').val();
                 var c=parseInt(a)+parseInt(b);
