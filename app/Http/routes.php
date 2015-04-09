@@ -37,15 +37,31 @@ Route::get(
 	'program/datatables',
 	['as'=>'program.datatables',
 	'uses'=>'ProgramController@datatables']);
+Route::resource('paket','ProgramController');
 
-Route::resource('program','ProgramController');
 
 Route::get(
-	'sertifikat/datatables',
-	['as'=>'sertifikat.datatables',
-	'uses'=>'SertifikatController@datatables']);
+	'siswa/paketdatatables/{id}',
+	['as'=>'siswa.paketdatatables',
+	'uses'=>'SiswaController@paketdatatables']);
 
-Route::resource('sertifikat','SertifikatController');
+Route::get(
+	'siswa/datatables',
+	['as'=>'siswa.datatables',
+	'uses'=>'SiswaController@datatables']);
+
+Route::get('siswa/pembayaran/{id_siswa}/{id_total_bayar}',
+	['as'=>'siswa.showbayar',
+	'uses'=>'SiswaController@showBayar']);
+
+Route::get(
+	'siswa/bayardatatables/{id_siswa}/{id_total_bayar}',
+	['as'=>'siswa.datatablesbayar',
+	'uses'=>'SiswaController@bayardatatables']);
+
+Route::resource('siswa','SiswaController');
+
+
 
 Route::get(
 	'biayapendaftaran/datatables',

@@ -9,7 +9,11 @@ class Bayar extends Model {
 	protected $fillable=[
 		'id_total_bayar',
 		'id_siswa',
-		'jumlah'
+		'jumlah',
+		'created_at'
 	];
 
+	public function totalBayar(){
+		return $this->belongsTo('App\TotalBayar','id_total_bayar');
+	}
 }

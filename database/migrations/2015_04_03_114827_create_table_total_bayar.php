@@ -18,6 +18,7 @@ class CreateTableTotalBayar extends Migration {
 			$table->integer('id_siswa')->unsigned();
 			$table->integer('id_paket')->unsigned();
 			$table->integer('biaya_paket')->unsigned();
+			$table->integer('sisa')->unsigned();
 			$table->timestamps();
 		});
 	}

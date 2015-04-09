@@ -4,14 +4,21 @@
 <div id="Person-5" class="box">
         <div class="box-header">
             <i class="icon-list icon-large"></i>
-            <h5>Sertifikat</h5>
+            <h5>Siswa</h5>
             
         </div>
         <div class="box-content box-table">   
-   <table class='table ' id='datatables'>
+   <table class='table' id='datatables'>
         <thead>
         <tr>
-          <th>Biaya</th>
+          <th>ID</th>
+          <th>NIS</th>
+          <th>Nama</th>
+          <th>Tempat</th>
+          <th>Tanggal Lahir</th>
+          <th>Nama Orang Tua</th>
+          <th>No. Hp</th>
+          <th>Alamat</th>
           <th>#</th>
         </tr>
         </thead>
@@ -34,7 +41,7 @@
     $(document).ready(function(){
 
           $("#datatables").dataTable({
-              "ajax" : "{!! route('sertifikat.datatables') !!}",
+              "ajax" : "{!! route('siswa.datatables') !!}",
               "fnInitComplete": function(oSettings, json) {
                   //inisialisi saat datatables setelah load
                    $('a[data-method]').click(function(e){

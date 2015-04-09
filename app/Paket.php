@@ -12,4 +12,7 @@ class Paket extends Model {
 		'nama'
 	];
 
+	public function totalBayar(){
+		return $this->hasOne('App\TotalBayar','id_paket');
+	}
 }

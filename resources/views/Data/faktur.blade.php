@@ -54,7 +54,7 @@
                                         <p> Uang yang telah diterima tidak dapat dikembalikan dengan alasan apapun.</p>
                                     </label>
                                     <div class="controls" style="float:right;">
-                                       Palembang, {!! date('d-m-Y')!!}
+                                       Palembang,  {!! date('d-m-Y',strtotime(session('bayar')['created_at'])) !!}
                                        <p>Yang menerima,</p>
                                        <br /><br />
                                        <p>Admin</p>

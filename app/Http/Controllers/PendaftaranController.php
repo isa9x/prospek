@@ -69,15 +69,19 @@ class PendaftaranController extends Controller {
 	}
 
 	public function postPaket(Request $request)
-	{
-		$id_siswa=Session::get('siswa.id');
+	{	
+		if(Session::has('siswa.id')){
+			$id_siswa=Session::get('siswa.id');
+		}else{
+			$id_siswa=Session::get('siswa')['id'];
+		}
 		$id_paket=$request->input('Paket');
 		$total_paket=$request->input('Total');
-
 		$total_bayar=TotalBayar::create([
 			'id_siswa'=>$id_siswa,
 			'id_paket'=>$id_paket,
-			'biaya_paket'=>$total_paket
+			'biaya_paket'=>$total_paket,
+			'sisa'=>$total_paket
 		]);
 
 		$nama=Paket::find($id_paket)->nama;
@@ -87,13 +91,18 @@ class PendaftaranController extends Controller {
 	}
 
 	public function getBayar()
-	{
+	{	
+		
 		return view('data.bayar');
 	}
 
 	public function postBayar(Request $request)
 	{
-		$id_siswa=Session::get('siswa.id');
+		if(Session::has('siswa.id')){
+			$id_siswa=Session::get('siswa.id');
+		}else{
+			$id_siswa=Session::get('siswa')['id'];
+		}
 		$id_total_bayar=Session::get('paket')['id'];
 		$jumlah=$request->input('Bayar');
 		$sisa=$request->input('SisaS');
@@ -105,6 +114,10 @@ class PendaftaranController extends Controller {
 			'jumlah'=>$jumlah
 		]);
 
+		$paket = TotalBayar::find($id_total_bayar);
+		$paket->sisa -= $jumlah;
+		$paket->save();
+
 		Session::put('bayar',$bayar);
 		Session::put('sisa',$sisa);
 		Session::put('ket',$ket);
@@ -112,7 +125,7 @@ class PendaftaranController extends Controller {
 	}
 
 	public function getFaktur()
-	{
+	{	
 		return view('data.faktur');
 	}
 }

@@ -1,4 +1,4 @@
-	{!! Form::model($sertifikat, ['method'=>'PATCH','action'=>  ['SertifikatController@update',$sertifikat->id]]) !!}
+	{!! Form::model($siswa, ['method'=>'PATCH','action'=>  ['SiswaController@update',$siswa->id]]) !!}
 	
 	<div class="modal-header">
   	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -9,7 +9,7 @@
    <div class="modal-body">
   
 
-		@include('sertifikat.form',['submitButtonText'=>'Ubah Sertifikat'])
+		@include('siswa.form',['submitButtonText'=>'Ubah Siswa'])
 
 			<!-- /modal-body -->
      {!! Form::close() !!} 

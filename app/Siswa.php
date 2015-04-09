@@ -17,4 +17,8 @@ class Siswa extends Model {
 		'biaya_pendaftaran'
 	];
 
+	public function totalBayar(){
+		return $this->hasMany('App\TotalBayar','id_siswa');
+	}
+
 }
