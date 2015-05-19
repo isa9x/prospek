@@ -93,6 +93,12 @@ class SiswaController extends Controller {
 		return redirect()->route('siswa.index');
 	}
 
+	public function bayarPaket($id_siswa,$id_total_bayar)
+	{	
+		$totalbayar=TotalBayar::findOrFail($id_total_bayar);
+		return view('siswa.bayarpaket')->with('totalbayar',$totalbayar);
+	}
+
 	public function datatables(){
 		$siswa=Siswa::all();
 		$data=array();
@@ -129,7 +135,8 @@ class SiswaController extends Controller {
 		foreach ($siswa->totalBayar as $sp) {
 			$l[0] = $sp->paket->nama;
 			$l[1] = $sp->paket->biaya_paket + $sp->paket->biaya_sertifikat;
-			$l[2] = "
+			$l[2] = ($sp->sisa==0)?"Lunas":"Belum Lunas";
+			$l[3] = "
 				<a href='".route('siswa.showbayar',[$siswa->id,$sp->id])."'>Detail Pembayaran</a>
 			";
 

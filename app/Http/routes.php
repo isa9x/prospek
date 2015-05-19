@@ -59,6 +59,11 @@ Route::get(
 	['as'=>'siswa.datatablesbayar',
 	'uses'=>'SiswaController@bayardatatables']);
 
+Route::get(
+	'siswa/bayarpaket/{id_siswa}/{id_total_bayar}',
+	['as'=>'siswa.bayarpaket',
+	'uses'=>'SiswaController@bayarPaket']);
+
 Route::resource('siswa','SiswaController');
 
 

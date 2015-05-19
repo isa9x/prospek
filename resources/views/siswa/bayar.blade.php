@@ -3,8 +3,8 @@
 @section('content')
 
 <h1>Detail Pembayaran</h1>
-
 <fieldset>
+ <a class="btn btn-primary pull-right" id="sign"  href="{!! route('siswa.bayarpaket') !!}"><i class="icon-g-circle-plus"></i>Bayar</a>
 	<div class="box-content box-table">   
 		<table class='table' id='bayardatatables'>
 			    		<thead>

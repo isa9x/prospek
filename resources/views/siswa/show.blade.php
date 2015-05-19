@@ -55,6 +55,7 @@
 			        		<tr>
 					          <th>Nama Paket</th>
 					          <th>Biaya Paket</th>
+					          <th>Keterangan</th>
 					          <th>#</th>
 					        </tr>
 				        </thead>
